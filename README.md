@@ -1,4 +1,3 @@
-# openmoss_application
 # OpenMOSS Research Assistant Application: PyTorch & NLP Exercises
 
 本项目记录了申请复旦大学 OpenMOSS 组助研岗位所完成的一系列 PyTorch 及 NLP 基础练习。内容涵盖从底层张量运算推导、深度学习架构对比到 Transformer 模型的从零构建。
