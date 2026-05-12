@@ -24,7 +24,7 @@ object_lookup = {}
 EE_INDEX = 11  
 global_grasp_constraint = None
 
-client = OpenAI(api_key="sk-8e0f9b9028cb4646a2116239e7531aa9", base_url="https://api.deepseek.com")
+client = OpenAI(api_key="", base_url="https://api.deepseek.com")
 local_model = None
 local_tokenizer = None
 
