@@ -20,18 +20,20 @@
 
 ```text
 .
-├── pytorch_basics/           # PyTorch & NLP 基础练习
-│   ├── task1_ml_baseline/    # 纯张量实现的 Softmax 分类器
-│   ├── task2_deep_nlp/       # 深度学习文本分类对比 (CNN/RNN/Transformer)
-│   └── task3_transformer/    # Transformer & Decoder-only 从零实现
-├── embodied_ai/              # 具身智能实践
-│   ├── imitation_learning/   # Diffusion Policy 与 ACT 算法复现 (PushT/Aloha)
-│   └── task_planning/        # Code as Policies 与 Qwen 具身微调
-├── reports/                  # 深度实验报告 (PDF)
+├── pytorch_basics/                    # PyTorch & NLP 基础练习
+│   ├── task1/                         # 纯张量实现的 Softmax 分类器
+│   ├── task2/                         # 深度学习文本分类对比 (CNN/RNN/Transformer)
+│   └── task3/                         # Transformer & Decoder-only 从零实现
+├── EI_beginner/                       # 具身智能实践
+│   ├── CaP_benchmark_run/             # 在Pybullet仿真实验室验证Code as Policies(Finetuned)
+│   ├── CaP_prompt_pybullet/           # 在Pybullet仿真实验室验证Code as Policies(by Prompt)，收集Finetune数据 
+│   ├── plot_aloha_loss/               # diffusion policy aloha损失曲线绘制
+│   ├── plot_pusht_ablation/           # diffusion policy pusht消融实验损失曲线绘制
+│   └── run_diffusion_steps_ablation/  # Diffusion Policy 消融实验   
+├── reports/                           # 深度实验报告 (PDF)
 │   ├── PyTorch基本练习实验报告.pdf
 │   └── 具身智能入门练习实验报告.pdf
-├── assets/                   # 实验结果可视化 (曲线图、仿真视频)
-└── requirements.txt          # 环境依赖列表
+└── assets/                            # 实验结果可视化 (曲线图、仿真视频)
 
 ```
 
@@ -48,12 +50,10 @@
 
 
 * **Task-3: Transformer 与泛化探究**：
-* 
-**加法任务**：揭示了标准 Transformer 在未见数位组合上的内插与外推泛化局限 。
+* **加法任务**：揭示了标准 Transformer 在未见数位组合上的内插与外推泛化局限 。
 
 
-* 
-**语言模型**：基于《老友记》剧本实践了 LM 预训练，观察到模型从“字符统计”到“高层句法”的涌现过程 。
+* **语言模型**：基于《老友记》剧本实践了 LM 预训练，观察到模型从“字符统计”到“高层句法”的涌现过程 。
 
 
 
@@ -69,7 +69,6 @@
 
 
 * **知识蒸馏与 SFT**：将 DeepSeek-Chat 的规划能力蒸馏至 **Qwen2.5-7B**，使 7B 模型在大幅缩减推理耗时的同时，内化了空间坐标分析逻辑 。
-
 
 
 
@@ -91,7 +90,6 @@
  |
 | **具身规划** | Qwen2.5-7B SFT | Loss: ~0.2141 | 蒸馏模型推理耗时缩减约 50% 
 
- |
 
 ---
 
