@@ -104,6 +104,3 @@
 
 
 
----
-
-**更多技术细节与消融实验分析，请参阅 [Full Reports](https://www.google.com/search?q=./reports/)。**
