@@ -1,47 +1,119 @@
-# OpenMOSS Research Assistant Application: PyTorch & NLP Exercises
+# OpenMOSS 助研申请项目：PyTorch 基础与具身智能实践
 
-本项目记录了申请复旦大学 OpenMOSS 组助研岗位所完成的一系列 PyTorch 及 NLP 基础练习。内容涵盖从底层张量运算推导、深度学习架构对比到 Transformer 模型的从零构建。
+本项目包含申请复旦大学 OpenMOSS 组助研岗位所完成的系统性练习，涵盖了从底层张量运算、深度学习架构对比到具身智能（Embodied AI）模仿学习与大模型任务规划的深度探索。
 
 ## 🚀 项目亮点
-* **底层重构**：Task-1 摒弃 `nn.Module` 和 `autograd`，基于线性代数算子手写 Softmax 回归的前向与反向传播。
-* **架构消融**：Task-2 深入对比了 TextCNN、BiLSTM 与 Transformer 在短文本分类任务中的性能边界及归纳偏置差异。
-* **模型构建**：Task-3 手写实现 Multi-head Attention 及标准 Encoder-Decoder / Decoder-only 架构。
-* **实验严谨**：不仅包含模型实现，还针对学习率敏感度、长度泛化（多位数加法）及语言模型涌现过程进行了详细分析。
+
+* 
+**底层架构重写**：脱离 `torch.nn` 高级封装，从线性代数层面手写 Softmax 回归及 Transformer 底层算子 。
+
+
+* 
+**架构性能消融**：针对同一文本分类任务，横向对比了 TextCNN、BiLSTM 与 Transformer Encoder 的归纳偏置差异 。
+
+
+* 
+**具身智能闭环**：实现了从基于 Diffusion Policy 的模仿学习到基于 LLM 的 Code as Policies（CaP）任务规划，并完成了 7B 级别模型的具身指令微调（SFT） 。
+
+
 
 ---
 
-## 📂 模块说明
+## 📂 仓库结构
 
-### [Task-1] 基于机器学习的文本分类
-* **核心逻辑**：手动推导交叉熵（CE）与均方误差（MSE）的梯度公式，利用 PyTorch 张量运算实现 Mini-batch 训练。
-* **特征工程**：对比了 BoW 与 N-gram (Uni/Bi/Tri-gram) 的表征优势。
-* **结论**：验证了 Cross-Entropy 在处理极端偏差初始化时的收敛稳定性。
+```text
+.
+├── pytorch_basics/           # PyTorch & NLP 基础练习
+│   ├── task1_ml_baseline/    # 纯张量实现的 Softmax 分类器
+│   ├── task2_deep_nlp/       # 深度学习文本分类对比 (CNN/RNN/Transformer)
+│   └── task3_transformer/    # Transformer & Decoder-only 从零实现
+├── embodied_ai/              # 具身智能实践
+│   ├── imitation_learning/   # Diffusion Policy 与 ACT 算法复现 (PushT/Aloha)
+│   └── task_planning/        # Code as Policies 与 Qwen 具身微调
+├── reports/                  # 深度实验报告 (PDF)
+│   ├── PyTorch基本练习实验报告.pdf
+│   └── 具身智能入门练习实验报告.pdf
+├── assets/                   # 实验结果可视化 (曲线图、仿真视频)
+└── requirements.txt          # 环境依赖列表
 
-### [Task-2] 基于深度学习的文本分类
-* **模型实现**：实现 TextCNN (Yoon Kim, 2014)、BiLSTM-Attention 及 Transformer Encoder。
-* **性能对比**：在相同参数量级下，Transformer 以 **48.87%** 的准确率和 **42.30%** 的 F1-Macro 优于传统 CNN/RNN 结构。
-* **词嵌入策略**：探讨了 GloVe 预训练权重在微调与冻结状态下的泛化表现。
-
-### [Task-3] Transformer 基础结构实现
-* **子任务 1 (加法逻辑)**：通过 3-5 位数加法测试验证了标准 Transformer 在逻辑推理中的长度泛化局限。
-* **子任务 2 (语言模型)**：基于《老友记》剧本，使用 GPT-style 架构实践了 Next-token Prediction 训练链路，展示了模型从随机乱码到习得剧本格式及语法的演变过程。
-
----
-
-## 📊 核心实验结果
-> 详细实验图表及数学推导请参阅 [Full Report (PDF)](./reports/Fudan_OpenMOSS_Application_Report.pdf)
-
-| 模型架构 | 测试集准确率 | F1-Macro | 备注 |
-| :--- | :---: | :---: | :--- |
-| Softmax (Tri-gram) | 48.27% | 42.00% | Task-1 Baseline |
-| TextCNN | 45.00% | 29.34% | Task-2 |
-| Transformer Encoder | 48.87% | 42.30% | Task-2 (SOTA) |
+```
 
 ---
 
-## 🛠️ 环境配置与运行指南
-本项目基于 PyTorch 实现，建议使用 CUDA 环境以加速计算。
+## 🧪 核心任务综述
 
-1. **安装依赖**：
-   ```bash
-   pip install -r requirements.txt
+### 1. PyTorch & NLP 基础
+
+* 
+**Task-1: 机器学习基准**：基于基础线性代数构建 Softmax 回归，验证了 N-gram 相比 BoW 的特征表示优势（测试集准确率 48.27%） 。
+
+
+* 
+**Task-2: 深度架构对比**：使用 GloVe 300d 词嵌入，在控制参数量（$10^5$ 级）一致时，Transformer Encoder 在准确率（48.87%）与 F1-Macro（42.30%）上均显著优于 TextCNN 与 BiLSTM 。
+
+
+* **Task-3: Transformer 与泛化探究**：
+* 
+**加法任务**：揭示了标准 Transformer 在未见数位组合上的内插与外推泛化局限 。
+
+
+* 
+**语言模型**：基于《老友记》剧本实践了 LM 预训练，观察到模型从“字符统计”到“高层句法”的涌现过程 。
+
+
+
+
+
+### 2. 具身智能实践
+
+* 
+**模仿学习 (Diffusion Policy)**：通过 PushT 任务验证了生成式策略在多模态动作分布拟合上的优越性，并探讨了时序观测界限（Observation Horizon）对样本效率的影响 。
+
+
+* **任务规划 (Code as Policies)**：
+* 利用 LLM 生成 Python 代码驱动 PyBullet 仿真环境中的 Franka Panda 机械臂 。
+
+
+* 
+**知识蒸馏与 SFT**：将 DeepSeek-Chat 的规划能力蒸馏至 **Qwen2.5-7B**，使 7B 模型在大幅缩减推理耗时的同时，内化了空间坐标分析逻辑 。
+
+
+
+
+* 
+**场景级任务**：在 ALFRED 基准测试中，通过结构化 ICL 与双轨制 CoT 提升了多模态模型在复杂环境中的子目标拆解与错误恢复能力 。
+
+
+
+---
+
+## 📈 实验数据摘要
+
+| 任务模块 | 核心模型/配置 | 主要指标 | 结论 |
+| --- | --- | --- | --- |
+| **文本分类** | Transformer Encoder | Acc: 48.87% / F1: 42.30% | 全局自注意力机制优于局部卷积 
+
+ |
+| **算术推理** | Encoder-Decoder | IID EM: ~100% | 长度泛化（外推）能力存在显著瓶颈 
+
+ |
+| **具身规划** | Qwen2.5-7B SFT | Loss: ~0.2141 | 蒸馏模型推理耗时缩减约 50% 
+
+ |
+
+---
+
+## 🛠️ 环境要求
+
+* Python 3.9+
+* PyTorch 2.x
+* 仿真环境: PyBullet, Gym-PushT, AI2-THOR 
+
+
+* 具身框架: LeRobot, EmbodiedBench 
+
+
+
+---
+
+**更多技术细节与消融实验分析，请参阅 [Full Reports](https://www.google.com/search?q=./reports/)。**
