@@ -4,16 +4,13 @@
 
 ## 🚀 项目亮点
 
-* 
-**底层架构重写**：脱离 `torch.nn` 高级封装，从线性代数层面手写 Softmax 回归及 Transformer 底层算子 。
+* **底层架构重写**：脱离 `torch.nn` 高级封装，从线性代数层面手写 Softmax 回归及 Transformer 底层算子 。
 
 
-* 
-**架构性能消融**：针对同一文本分类任务，横向对比了 TextCNN、BiLSTM 与 Transformer Encoder 的归纳偏置差异 。
+* **架构性能消融**：针对同一文本分类任务，横向对比了 TextCNN、BiLSTM 与 Transformer Encoder 的归纳偏置差异 。
 
 
-* 
-**具身智能闭环**：实现了从基于 Diffusion Policy 的模仿学习到基于 LLM 的 Code as Policies（CaP）任务规划，并完成了 7B 级别模型的具身指令微调（SFT） 。
+* **具身智能闭环**：实现了从基于 Diffusion Policy 的模仿学习到基于 LLM 的 Code as Policies（CaP）任务规划，并完成了 7B 级别模型的具身指令微调（SFT） 。
 
 
 
@@ -44,12 +41,10 @@
 
 ### 1. PyTorch & NLP 基础
 
-* 
-**Task-1: 机器学习基准**：基于基础线性代数构建 Softmax 回归，验证了 N-gram 相比 BoW 的特征表示优势（测试集准确率 48.27%） 。
+* **Task-1: 机器学习基准**：基于基础线性代数构建 Softmax 回归，验证了 N-gram 相比 BoW 的特征表示优势（测试集准确率 48.27%） 。
 
 
-* 
-**Task-2: 深度架构对比**：使用 GloVe 300d 词嵌入，在控制参数量（$10^5$ 级）一致时，Transformer Encoder 在准确率（48.87%）与 F1-Macro（42.30%）上均显著优于 TextCNN 与 BiLSTM 。
+* **Task-2: 深度架构对比**：使用 GloVe 300d 词嵌入，在控制参数量（$10^5$ 级）一致时，Transformer Encoder 在准确率（48.87%）与 F1-Macro（42.30%）上均显著优于 TextCNN 与 BiLSTM 。
 
 
 * **Task-3: Transformer 与泛化探究**：
@@ -66,22 +61,19 @@
 
 ### 2. 具身智能实践
 
-* 
-**模仿学习 (Diffusion Policy)**：通过 PushT 任务验证了生成式策略在多模态动作分布拟合上的优越性，并探讨了时序观测界限（Observation Horizon）对样本效率的影响 。
+* **模仿学习 (Diffusion Policy)**：通过 PushT 任务验证了生成式策略在多模态动作分布拟合上的优越性，并探讨了时序观测界限（Observation Horizon）对样本效率的影响 。
 
 
 * **任务规划 (Code as Policies)**：
 * 利用 LLM 生成 Python 代码驱动 PyBullet 仿真环境中的 Franka Panda 机械臂 。
 
 
-* 
-**知识蒸馏与 SFT**：将 DeepSeek-Chat 的规划能力蒸馏至 **Qwen2.5-7B**，使 7B 模型在大幅缩减推理耗时的同时，内化了空间坐标分析逻辑 。
+* **知识蒸馏与 SFT**：将 DeepSeek-Chat 的规划能力蒸馏至 **Qwen2.5-7B**，使 7B 模型在大幅缩减推理耗时的同时，内化了空间坐标分析逻辑 。
 
 
 
 
-* 
-**场景级任务**：在 ALFRED 基准测试中，通过结构化 ICL 与双轨制 CoT 提升了多模态模型在复杂环境中的子目标拆解与错误恢复能力 。
+* **场景级任务**：在 ALFRED 基准测试中，通过结构化 ICL 与双轨制 CoT 提升了多模态模型在复杂环境中的子目标拆解与错误恢复能力 。
 
 
 
