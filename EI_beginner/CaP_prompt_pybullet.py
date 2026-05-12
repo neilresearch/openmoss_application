@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[94]:
-
 
 import pybullet as p
 import pybullet_data
@@ -22,7 +17,7 @@ EE_INDEX = 11
 global_grasp_constraint = None
 
 client = OpenAI(
-    api_key="sk-8e0f9b9028cb4646a2116239e7531aa9",
+    api_key="",
     base_url="https://api.deepseek.com"
 )
 
